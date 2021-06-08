@@ -1,0 +1,31 @@
+.content{
+  border: 2px dashed dimgray;
+  border-radius: 5px;
+  padding: 6px;
+  margin-top: 1px;
+  margin: 4px;
+  display: flex;
+  justify-content: space-around;
+}
+.settings{width: 200px;}
+.dashboard{
+  height: 100%;
+}
+.colorselects{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+.mat-form-field-wrapper {
+  padding-bottom: 0.5em;
+}
+@media screen and (max-width: 1800px) {
+  .dashboard {width: 1200px;}
+
+ }
+ @media screen and (max-width: 1500px) {
+  .dashboard {max-width: 900px;}
+ }
+ @media screen and (max-width: 1200px) {
+  .dashboard {max-width: 600px;}
+ }

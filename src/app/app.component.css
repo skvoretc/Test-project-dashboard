@@ -1,0 +1,18 @@
+.button {
+  padding: 4px 24px;
+  cursor: pointer;
+  font-size: 18px;
+  color: rgb(87, 85, 85);
+  text-decoration: none;
+  font-weight: lighter
+}
+.activebutton {
+  font-weight: normal;
+  cursor: pointer;
+  font-size: 18px;
+  border-bottom: dashed rgb(87, 85, 85) 1px;
+}
+.navbar{
+  display: flex;
+  justify-content: space-between;
+}

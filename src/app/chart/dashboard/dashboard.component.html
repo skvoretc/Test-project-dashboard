@@ -1,0 +1,96 @@
+<div class="content">
+  <div class="settings">
+    <section class="example-section" [formGroup]="chartselect">
+      <section>
+        <mat-checkbox
+          color="warn"
+          (change)="changeseries()"
+          [(ngModel)]="curchart.temp"
+          formControlName="temp"
+          >Temperature</mat-checkbox
+        >
+      </section>
+      <section>
+        <mat-checkbox
+          color="warn"
+          (change)="changeseries()"
+          [(ngModel)]="curchart.min_temp"
+          formControlName="min_temp"
+          >Min temp</mat-checkbox
+        >
+      </section>
+      <section>
+        <mat-checkbox
+          color="warn"
+          (change)="changeseries()"
+          [(ngModel)]="curchart.feel"
+          formControlName="feel"
+          >Feels like</mat-checkbox
+        >
+      </section>
+      <section>
+        <mat-checkbox
+          color="warn"
+          (change)="changeseries()"
+          [(ngModel)]="curchart.pressure"
+          formControlName="pressure"
+          >Pressure</mat-checkbox
+        >
+      </section>
+    </section>
+    <div class="colorselects">
+      <mat-form-field appearance="fill" *ngIf="chartselect.value.temp">
+        <mat-label>Temperature chart color</mat-label>
+        <mat-select [(ngModel)]="tempcolor" (selectionChange)="changeseries()">
+          <mat-option *ngFor="let color of colors" value="{{ color.code }}">{{
+            color.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" *ngIf="chartselect.value.min_temp">
+        <mat-label>Min temperature chart color</mat-label>
+        <mat-select
+          [(ngModel)]="min_tempcolor"
+          (selectionChange)="changeseries()"
+        >
+          <mat-option *ngFor="let color of colors" value="{{ color.code }}">{{
+            color.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" *ngIf="chartselect.value.feel">
+        <mat-label>Feels like chart color</mat-label>
+        <mat-select [(ngModel)]="feelcolor" (selectionChange)="changeseries()">
+          <mat-option *ngFor="let color of colors" value="{{ color.code }}">{{
+            color.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" *ngIf="chartselect.value.pressure">
+        <mat-label>pressure chart color</mat-label>
+        <mat-select
+          [(ngModel)]="pressurecolor"
+          (selectionChange)="changeseries()"
+        >
+          <mat-option *ngFor="let color of colors" value="{{ color.code }}">{{
+            color.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="warn" (click)="change_type()">
+        Change chart type
+      </button>
+    </div>
+  </div>
+  <div class="dashboard">
+    <highcharts-chart
+      [Highcharts]="highcharts"
+      [(update)]="updateflag"
+      [options]="chartOptions"
+      [oneToOne]="true"
+      [callbackFunction]="chartCallback"
+      style="width: 100%; display: block"
+    >
+    </highcharts-chart>
+  </div>
+</div>

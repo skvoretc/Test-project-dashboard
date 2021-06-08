@@ -1,0 +1,39 @@
+<div class="top"></div>
+
+<div class="container">
+  <div class="select">
+    <mat-form-field style="width: 100%; min-width: 800px" appearance="fill">
+      <mat-label>Charts</mat-label>
+      <mat-select
+        (selectionChange)="change()"
+        [(ngModel)]="smthng"
+        [formControl]="chartsselect"
+        multiple
+      >
+        <mat-option *ngFor="let chart of chartsList" [value]="chart">{{
+          chart
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <app-dashboard
+    *ngIf="smthng.includes(chartsList[0])"
+    [title]="'First chart'"
+    [curchart]="firstchart"
+  ></app-dashboard>
+  <app-dashboard
+    *ngIf="smthng.includes(chartsList[1])"
+    [title]="'Second chart'"
+    [curchart]="secondchart"
+  ></app-dashboard>
+  <app-dashboard
+    *ngIf="smthng.includes(chartsList[2])"
+    [title]="'Third chart'"
+    [curchart]="thirdchart"
+  ></app-dashboard>
+  <app-dashboard
+    *ngIf="smthng.includes(chartsList[3])"
+    [title]="'Fourth chart'"
+    [curchart]="fourthchart"
+  ></app-dashboard>
+</div>

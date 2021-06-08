@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="settings">
+    <mat-form-field style="width: 100%;" appearance="fill">
+      <mat-label>Choose City</mat-label>
+      <mat-select [(ngModel)]="curCity" (selectionChange)='changecity()' [formControl]="choosecitycontrol">
+          <mat-option   *ngFor="let city of Citylist" [value]="city.value">
+            {{city.name}}
+          </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="label">
+    {{curCity.name}}
+  </div>
+  <div class="forecast">
+    <mat-card  class="forecast-card" *ngFor="let day of weather">
+      <mat-card-header>
+        <mat-card-title style="text-align: center;font-size: 22px;">{{day.day}}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content style="display: flex;flex-direction: column; justify-content: space-around;margin-top: 5px;">
+        <mat-icon *ngIf="day.weather.description=='ясно'" svgIcon="sun" class="icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <mat-icon *ngIf="day.weather.description=='небольшой дождь'" svgIcon="semi_rain" class="icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <mat-icon *ngIf="day.weather.description=='пасмурно'" svgIcon="cloud" class="icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <mat-icon *ngIf="day.weather.description=='дождь'" svgIcon="rain" class="icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <mat-icon *ngIf="day.weather.description=='переменная облачность'" svgIcon="semi_cloud" class="icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <mat-icon *ngIf="day.weather.description=='облачно с прояснениями'" svgIcon="semi_cloud" class="icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <mat-icon *ngIf="day.weather.description=='небольшая облачность'" svgIcon="semi_cloud" class="icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <mat-icon *ngIf="day.weather.description=='сильный дождь'" svgIcon="rain" class="icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+
+
+
+        <p style="text-align: center;font-size: 22px;">
+          Day: {{day.day_temp}}°
+        </p>
+        <p style="text-align: center;font-size: 22px;">
+          Night: {{day.night_temp}}°
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>
